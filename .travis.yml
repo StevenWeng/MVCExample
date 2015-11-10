@@ -4,7 +4,5 @@ script: mvn package
 
 addons:
   artifacts: true
-  s3_region: "ap-northeast-1"
-  paths: /home/travis/build/StevenWeng/MVCExample/target/MVCExample.war
 
 env: ARTIFACTS_KEY=AKIAJZC4E2J6ZULEZZ7Q ARTIFACTS_SECRET=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 ARTIFACTS_BUCKET=doim-editor-test
