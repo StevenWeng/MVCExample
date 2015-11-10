@@ -1,8 +1,15 @@
+sudo: required
+
 language: java
+
+services:
+  - docker
 
 script: mvn package
 
-addons:
-  artifacts: true
+after_success:
+  - docker build -t stevenweng/testweb ./
+  - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+  - docker push stevenweng/testweb
 
-env: ARTIFACTS_KEY=AKIAJZC4E2J6ZULEZZ7Q ARTIFACTS_SECRET=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 ARTIFACTS_BUCKET=doim-editor-test
+env: DOCKER_EMAIL=wosteven@gmail.com DOCKER_USERNAME=stevenweng DOCKER_PASSWORD=s1305090
