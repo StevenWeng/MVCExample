@@ -1,1 +1,15 @@
+sudo: required
+
 language: java
+
+services:
+  - docker
+
+script: mvn package
+
+after_success:
+  - docker build -t stevenweng/testweb ./
+  - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+  - docker push stevenweng/testweb
+
+env: DOCKER_EMAIL=wosteven@gmail.com DOCKER_USERNAME=stevenweng DOCKER_PASSWORD=s1305090
