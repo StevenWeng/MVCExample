@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@RequestMapping(value = "/test")
+@RequestMapping()
 public class TestController {
 	@Autowired
 	HelloService helloService;
@@ -32,7 +32,7 @@ public class TestController {
 		return result;
 	}
 
-	@RequestMapping(value = "/")
+	@RequestMapping()
 	public String index() {
 		return "index";
 	}
